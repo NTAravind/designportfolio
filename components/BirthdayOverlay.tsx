@@ -9,8 +9,8 @@ const STORAGE_KEY = "birthday_bibble_seen";
 const SHOW_DELAY_MS = 1200;
 const SLIDE_DURATION_MS = 4200;
 
-const SLIDES = ["birthday", "admin", "present"] as const;
-type SlideIndex = 0 | 1 | 2;
+const SLIDES = ["birthday", "admin", "sorry", "present"] as const;
+type SlideIndex = 0 | 1 | 2 | 3;
 
 const GIFS = [
   {
@@ -169,7 +169,7 @@ export default function BirthdayOverlay() {
             </motion.span>
           ))}
 
-          {/* Corner bibbles (decor on every slide) */}
+          {/* Corner bibbles (decor on every slide)*/}
           <motion.div
             initial={{ opacity: 0, x: -60, rotate: -20 }}
             animate={{ opacity: 1, x: 0, rotate: -6 }}
@@ -328,9 +328,27 @@ export default function BirthdayOverlay() {
               )}
 
               {slideIndex === 2 && (
+                <div className="text-center bg-cream border-4 border-text-dark rounded-3xl shadow-[10px_10px_0px_var(--text-dark)] px-6 py-10 md:px-14 md:py-12 max-w-xl mx-4 rotate-[0.5deg]">
+                  <div className="inline-block bg-dark-pink border-2 border-text-dark rounded-full px-5 py-1.5 text-text-dark font-black text-sm md:text-base tracking-wider uppercase mb-5">
+                    BRO
+                  </div>
+                  <h2 className="text-text-dark font-black text-3xl md:text-5xl leading-[1.15] tracking-tight">
+                    I&apos;m sorry if this is
+                    <br />
+                    out of bounds or
+                    <br />
+                    no space or
+                    <br />
+                    smtg like tht 😅
+                  </h2>
+                  
+                </div>
+              )}
+
+              {slideIndex === 3 && (
                 <div className="text-center bg-cream border-4 border-text-dark rounded-3xl shadow-[10px_10px_0px_var(--text-dark)] px-6 py-10 md:px-14 md:py-12 max-w-xl mx-4 rotate-[-1.5deg]">
                   <div className="inline-block bg-dark-pink border-2 border-text-dark rounded-full px-5 py-1.5 text-text-dark font-black text-sm md:text-base tracking-wider uppercase mb-5">
-                    🎁 Final stop
+                    finally
                   </div>
                   <h2 className="text-text-dark font-black text-3xl md:text-5xl leading-[1.1] tracking-tight">
                     psst… there&apos;s also a
@@ -344,6 +362,29 @@ export default function BirthdayOverlay() {
               )}
             </motion.div>
           </AnimatePresence>
+
+          {/* Navigation arrows */}
+          <button
+            onClick={() =>
+              setSlideIndex(Math.max(0, slideIndex - 1) as SlideIndex)
+            }
+            disabled={slideIndex === 0}
+            aria-label="Previous slide"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-cream border-2 border-text-dark rounded-full text-text-dark font-black text-2xl shadow-[4px_4px_0px_var(--text-dark)] hover:bg-dark-pink hover:translate-y-[calc(-50%-2px)] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-cream"
+          >
+            ←
+          </button>
+          <button
+            onClick={() =>
+              slideIndex === SLIDES.length - 1
+                ? setPhase("done")
+                : setSlideIndex((slideIndex + 1) as SlideIndex)
+            }
+            aria-label="Next slide"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-cream border-2 border-text-dark rounded-full text-text-dark font-black text-2xl shadow-[4px_4px_0px_var(--text-dark)] hover:bg-dark-pink hover:translate-y-[calc(-50%-2px)] transition-all"
+          >
+            →
+          </button>
 
           {/* Progress dots */}
           <div className="relative z-10 flex items-center gap-3 mt-8">
