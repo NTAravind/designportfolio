@@ -95,7 +95,7 @@ export default function AdminLoginPage() {
 
         <div className="mt-4 text-center">
           <Link href="/" className="text-sm text-[#ec4899] hover:underline">
-            ← Back to portfolio
+            ← Back to portfoli
           </Link>
         </div>
       </div>
