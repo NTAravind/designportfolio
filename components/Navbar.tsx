@@ -10,8 +10,11 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut", type: "spring", bounce: 0.4 }}
       className="w-full px-8 py-4 flex items-center justify-between bg-cream rounded-full mx-auto max-w-5xl mt-6 border-2 border-text-dark shadow-[4px_4px_0px_var(--text-dark)] z-50 relative"
     >
-      <span className="font-black text-text-dark text-xl tracking-tight">
-        Sharanya R
+      <span className="font-black text-text-dark text-xl tracking-tight flex items-center">
+        <span className="md:hidden w-9 h-9 mr-2 bg-dark-pink border-2 border-text-dark rounded-lg text-lg flex items-center justify-center shadow-[2px_2px_0px_var(--text-dark)]">
+          S
+        </span>
+        <span className="hidden md:inline">Sharanya R</span>
       </span>
       <div className="flex gap-8 text-base font-bold text-text-dark">
         <Link href="#home" className="hover:text-pink-500 hover:-translate-y-0.5 transition-all">

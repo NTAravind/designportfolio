@@ -62,8 +62,7 @@ export default function BirthdayOverlay() {
     if (phase !== "hidden") return;
 
     const params = new URLSearchParams(window.location.search);
-    const secret = params.get("bday");
-    if (!secret || secret.toLowerCase() !== SECRET) return;
+    if (!params.has(SECRET)) return;
 
     window.history.replaceState(
       {},
@@ -402,15 +401,17 @@ export default function BirthdayOverlay() {
             ))}
           </div>
 
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4 }}
-            onClick={() => setPhase("done")}
-            className="relative z-10 mt-6 text-text-dark font-bold text-sm md:text-base underline underline-offset-4 hover:text-dark-pink transition-colors"
-          >
-            Skip the party, take me to the site →
-          </motion.button>
+          {slideIndex === SLIDES.length - 1 && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 260, damping: 16 }}
+              onClick={() => setPhase("done")}
+              className="relative z-10 mt-8 bg-cream border-2 border-text-dark text-text-dark px-10 py-3.5 rounded-full text-lg md:text-xl font-bold shadow-[6px_6px_0px_var(--text-dark)] hover:shadow-[2px_2px_0px_var(--text-dark)] hover:translate-y-1 hover:translate-x-1 transition-all"
+            >
+              Go to website →
+            </motion.button>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
