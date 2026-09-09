@@ -169,7 +169,7 @@ export default function BirthdayOverlay() {
             </motion.span>
           ))}
 
-          {/* Corner bibbles (decor on every slide)*/}
+          {/* Corner bibbles (decor oneveryslide)*/}
           <motion.div
             initial={{ opacity: 0, x: -60, rotate: -20 }}
             animate={{ opacity: 1, x: 0, rotate: -6 }}
