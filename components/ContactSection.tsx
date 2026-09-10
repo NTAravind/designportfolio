@@ -86,14 +86,6 @@ export default function ContactSection() {
             >
               <span className="text-2xl">💼</span> Linkedin / Sharanya R
             </a>
-            <a
-              href="https://wa.me/919916247747"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-cream border-2 border-text-dark text-text-dark px-8 py-5 rounded-2xl text-xl font-bold shadow-[6px_6px_0px_var(--text-dark)] hover:shadow-[2px_2px_0px_var(--text-dark)] hover:translate-y-1 hover:translate-x-1 transition-all text-center flex items-center justify-center gap-3"
-            >
-              <span className="text-2xl">💬</span> WhatsApp / 99162 47747
-            </a>
           </motion.div>
         </div>
       </div>
